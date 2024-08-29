@@ -1,3 +1,4 @@
+# POR: Samuel Arango Echeverri, Isabella Hernández Posada
 # Sistema de Gestión de Inventario
 
 Este es un sistema simple de gestión de inventario desarrollado en Haskell. Permite a los usuarios registrar artículos, buscar artículos por categoría y listar todos los artículos registrados.

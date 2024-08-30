@@ -8,17 +8,17 @@ main = do
 menu :: IO ()
 menu = do
     putStrLn "Selecciona una de las opciones:"
-    putStrLn "1. Registremos la entrada del artículo"
+    putStrLn "1. Registrar la entrada del artículo"
     putStrLn "2. Buscar artículos por categoría"
     putStrLn "3. Listar todos los artículos"
-    putStrLn "4. Contar todos los artículos"
+    putStrLn "4. Contar artículos por categoría"
     putStrLn "5. Salir"
     opcion <- getLine
     case opcion of
         "1" -> registrarArticulo >> menu
         "2" -> buscarPorCategoria >> menu
         "3" -> listarArticulos >> menu
-        "4" -> contarArticulos >> menu
+        "4" -> contarArticulosPorCategoria >> menu
         "5" -> putStrLn "Saliendo..."
         _   -> putStrLn "Opción no válida. Por favor, intente de nuevo." >> menu
 
@@ -30,7 +30,7 @@ registrarArticulo = do
     putStrLn "Ingrese la categoría del artículo:"
     categoria <- getLine
     appendFile "inventario.txt" (nombre ++ "," ++ categoria ++ "\n")
-    putStrLn "Tu artículo se registró exitosamente"
+    putStrLn "Tu artículo se registró exitosamente."
 
 -- Función para buscar artículos por categoría
 buscarPorCategoria :: IO ()
@@ -56,22 +56,25 @@ listarArticulos :: IO ()
 listarArticulos = do
     contenido <- readFile "inventario.txt"
     if null contenido
-        then putStrLn "Aún no hay artículos registrados"
+        then putStrLn "Aún no hay artículos registrados."
         else do
             putStrLn "Lista de todos los artículos:"
             putStrLn contenido
 
--- Función para contar todos los artículos
-contarArticulos :: IO ()
-contarArticulos = do
+-- Función para contar artículos por categoría
+contarArticulosPorCategoria :: IO ()
+contarArticulosPorCategoria = do
+    putStrLn "Ingrese la categoría para contar los artículos:"
+    categoria <- getLine
     contenido <- readFile "inventario.txt"
-    let numArticulos = length (lines contenido)
-    putStrLn $ "Número total de artículos: " ++ show numArticulos
+    let articulos = lines contenido
+        filtrados = filter (esDeCategoria categoria) articulos
+        numFiltrados = length filtrados
+    putStrLn $ "En la categoría " ++ categoria ++ " hay " ++ show numFiltrados ++ " artículos."
 
 -- Función auxiliar para dividir cadenas de texto
 wordsWhen :: (Char -> Bool) -> String -> [String]
-wordsWhen p s =  case dropWhile p s of
+wordsWhen p s = case dropWhile p s of
                       "" -> []
                       s' -> w : wordsWhen p s''
                             where (w, s'') = break p s'
-

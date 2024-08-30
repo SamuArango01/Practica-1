@@ -65,12 +65,6 @@ Ingrese la categoría: Frutas
 Artículo registrado exitosamente.
 ```
 
-**Contribuciones:**
-
-Las contribuciones son bienvenidas. Si encuentras algún error o deseas agregar nuevas funcionalidades, por favor, crea un pull request.
-
-**Licencia:**
-
-[Especifica la licencia que estás utilizando, por ejemplo, MIT, GPL, etc.]
+# Gracias por leer!!
 
 

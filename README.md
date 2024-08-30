@@ -1,5 +1,5 @@
 # POR: Samuel Arango Echeverri, Isabella Hernández Posada
-# Link del video sustentación: Enlace del video
+# Link del video sustentación: https://eafit-my.sharepoint.com/personal/sarangoe3_eafit_edu_co/_layouts/15/stream.aspx?id=%2Fpersonal%2Fsarangoe3%5Feafit%5Fedu%5Fco%2FDocuments%2FGrabaciones%2FSustentaci%C3%B3n%20pr%C3%A1ctica%201%2D20240829%5F091835%2DGrabaci%C3%B3n%20de%20la%20reuni%C3%B3n%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Eb9a65542%2D0fbb%2D4dec%2Da8cf%2D8dddfb486058
 
 Este es un sistema simple de gestión de inventario desarrollado en Haskell. Permite a los usuarios registrar artículos, buscar artículos por categoría y listar todos los artículos registrados.
 

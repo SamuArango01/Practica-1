@@ -1,4 +1,3 @@
-
 -- Función principal
 main :: IO ()
 main = do
@@ -12,13 +11,15 @@ menu = do
     putStrLn "1. Registremos la entrada del artículo"
     putStrLn "2. Buscar artículos por categoría"
     putStrLn "3. Listar todos los artículos"
-    putStrLn "4. Salir"
+    putStrLn "4. Contar todos los artículos"
+    putStrLn "5. Salir"
     opcion <- getLine
     case opcion of
         "1" -> registrarArticulo >> menu
         "2" -> buscarPorCategoria >> menu
         "3" -> listarArticulos >> menu
-        "4" -> putStrLn "Saliendo..."
+        "4" -> contarArticulos >> menu
+        "5" -> putStrLn "Saliendo..."
         _   -> putStrLn "Opción no válida. Por favor, intente de nuevo." >> menu
 
 -- Función para registrar un nuevo artículo
@@ -50,7 +51,6 @@ esDeCategoria categoria line =
     let partes = wordsWhen (==',') line
     in length partes > 1 && categoria == partes !! 1
 
-
 -- Función para listar todos los artículos
 listarArticulos :: IO ()
 listarArticulos = do
@@ -61,9 +61,17 @@ listarArticulos = do
             putStrLn "Lista de todos los artículos:"
             putStrLn contenido
 
+-- Función para contar todos los artículos
+contarArticulos :: IO ()
+contarArticulos = do
+    contenido <- readFile "inventario.txt"
+    let numArticulos = length (lines contenido)
+    putStrLn $ "Número total de artículos: " ++ show numArticulos
+
 -- Función auxiliar para dividir cadenas de texto
 wordsWhen :: (Char -> Bool) -> String -> [String]
 wordsWhen p s =  case dropWhile p s of
                       "" -> []
                       s' -> w : wordsWhen p s''
                             where (w, s'') = break p s'
+
